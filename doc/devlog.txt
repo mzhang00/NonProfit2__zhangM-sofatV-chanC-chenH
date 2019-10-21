@@ -5,7 +5,7 @@ zhangM -- 2019-10-18 8:45
 zhangM -- 2019-10-21 12:00
     - Added doc directory and updated README.md
     
-chenH -- 2019-10-21 12:00
+chenH -- 2019-10-21 0:00
     -Created design doc
     -Wrote out core components and functions
     -Created component map
