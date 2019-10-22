@@ -4,14 +4,18 @@ zhangM -- 2019-10-18 8:45
 
 zhangM -- 2019-10-21 0:00
     - Added doc directory and updated README.md
+    - Created task division among team members
     
 chenH -- 2019-10-21 0:00
-    -Created design doc
-    -Wrote out core components and functions
-    -Created component map
+    - Created design doc
+    - Wrote out core components and functions
+    - Created component map
 
 chenH -- 2019-10-21 22:00
-    -Reviewed design doc, made changes to core features to show minimum viable product
-    -Modified component map
-    -Updated task division
-    -Began working site layout(display of all the webpages), added welcome and profile pages
+    - Reviewed design doc, made changes to core features to show minimum viable product
+    - Modified component map
+    - Updated task division
+    - Began working site layout(display of all the webpages), added welcome and profile pages
+
+zhangM -- 2019-10-21 23:00
+    - Finished site layout drawings
