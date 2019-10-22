@@ -8,11 +8,21 @@ DB_FILE="discobandit.db"
 db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
 c = db.cursor()               #facilitate db ops
 
-db.execute("CREATE TABLE IF NOT EXISTS users (username,password)")
 
-db.execute("CREATE TABLE IF NOT EXISTS posts (username,postID,verID,content)")
-
+print (addUser("cchan00","k"))
 
 
 db.commit() #save changes
 db.close()  #close database
+
+
+
+
+
+
+
+
+
+def addUser(username,password):
+    x = c.execute ("SELECT username FROM users;")
+    return x
