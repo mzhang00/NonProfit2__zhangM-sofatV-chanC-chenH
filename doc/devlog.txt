@@ -13,3 +13,5 @@ chenH -- 2019-10-21 0:00
 chenH -- 2019-10-21 22:00
     -Reviewed design doc, made changes to core features to show minimum viable product
     -Modified component map
+    -Updated task division
+    -Began working site layout(display of all the webpages), added welcome and profile pages
