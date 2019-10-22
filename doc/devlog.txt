@@ -1,3 +1,8 @@
+TEAM NONPROFIT2 - HONG WEI CHEN, MICHAEL ZHANG, VISHWAA SOFAT, CLEMENT CHAN 
+SoftDev pd1
+P#00 Da Art of Storytellin' - DEVLOG
+2019-10-28
+
 zhangM -- 2019-10-18 8:45
     - Finished Site Map in class along with sofatV
     - Added repo as a submodule to the repo of holding
