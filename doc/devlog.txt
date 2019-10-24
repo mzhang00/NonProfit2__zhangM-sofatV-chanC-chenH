@@ -32,3 +32,9 @@ Lessons from Article
 	•	Make sure you are coding properly and regularly. Don’t just copy code or hard code things. Work over time so that you can avoid last minute situations in which you might have to. 
 	•	Being fancy doesn’t mean it’s better. If you have prior knowledge that can help you be sure to use it. As much as learning new things is important don’t waste your time on it if it’s not helping out out. Remember productivity means getting close to your end goal. 
 	•	Focus on your code. If you’re not doing it the best way, fix your approach not another persons
+	
+zhangM -- 2019-10-24 0:00
+SQLITE join methods
+	- INNER JOIN: Finds items from rows in table A and table B where a certain condition is true and joins them in a table. This will be useful for showing previous entries of a certain user's blog because we can match the two tables with a common column, postID.
+	- LEFT JOIN: Similar to inner join but includes all the items of the left table. If there are no matching items in the right table, NULL will be put instead. This may be useful when trying to get the blog entries of a certain user, because there may or may not be data in the table, depending on whether or not the user has made a blog yet.
+	- CROSS JOIN: Cross join doesn't join tables based on a condition. Instead, it'll take two tables and match all the rows from the second table with each row of the first table. So, in the joined table, there are the same amount of rows as the amount of rows in the two tables multiplied. We're currently not sure when this whether or not this will be useful to our project.
