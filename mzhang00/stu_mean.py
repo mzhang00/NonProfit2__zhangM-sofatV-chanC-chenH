@@ -5,6 +5,7 @@
 
 import sqlite3   #enable control of an sqlite database
 import csv       #facilitate CSV I/O
+import sys
 
 DB_FILE="discobandit.db"
 
@@ -59,7 +60,8 @@ def searchBlog(query):
     foo = c.execute(q)
     return str(foo.fetchall()[0])[1:-2]
 
-print(searchBlog(1));
+#print(sys.argv[1])
+print(searchBlog(sys.argv[1]))
 
 #==========================================================
 
