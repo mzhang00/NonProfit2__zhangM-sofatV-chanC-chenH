@@ -9,22 +9,22 @@ def root():
 @app.route('/login')
 
 def login():
-    return render_template("auth.html",
-                           display = """<form action='/auth'>
-                                        Username:
-                                        <br>
-                                        <input type="text" name="username"><br>
-                                        Password:<br>
-                                        <input type="password" name="password">
-                                        <br>
-                                        <input type="submit" value="Login">
-                                        </form>""")
+    return render_template("auth.html")
 
 @app.route('/signup')
 
 def signup():
-    return ""
-    
+    return render_template("auth.html")
+
+@app.route('/create')
+
+def create():
+    return ''
+
+@app.route('/auth')
+
+def auth():
+    return ''
 
 if __name__ == '__main__':
     app.debug = True
