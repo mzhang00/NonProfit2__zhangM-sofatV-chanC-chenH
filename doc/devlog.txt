@@ -24,3 +24,11 @@ chenH -- 2019-10-21 22:00
 
 zhangM -- 2019-10-21 23:00
     - Finished site layout drawings
+
+sofatV -- 2019-10-23 8:00
+Lessons from Article 
+	•	Communication is key. If there are conflicting ideas, resolve them; don’t just make your code work for both because that’s not doing the task properly it’s a cop out. 
+	•	Constructive debate helps not harms. 
+	•	Make sure you are coding properly and regularly. Don’t just copy code or hard code things. Work over time so that you can avoid last minute situations in which you might have to. 
+	•	Being fancy doesn’t mean it’s better. If you have prior knowledge that can help you be sure to use it. As much as learning new things is important don’t waste your time on it if it’s not helping out out. Remember productivity means getting close to your end goal. 
+	•	Focus on your code. If you’re not doing it the best way, fix your approach not another persons
