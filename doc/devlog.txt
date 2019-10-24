@@ -38,3 +38,16 @@ SQLITE join methods
 	- INNER JOIN: Finds items from rows in table A and table B where a certain condition is true and joins them in a table. This will be useful for showing previous entries of a certain user's blog because we can match the two tables with a common column, postID.
 	- LEFT JOIN: Similar to inner join but includes all the items of the left table. If there are no matching items in the right table, NULL will be put instead. This may be useful when trying to get the blog entries of a certain user, because there may or may not be data in the table, depending on whether or not the user has made a blog yet.
 	- CROSS JOIN: Cross join doesn't join tables based on a condition. Instead, it'll take two tables and match all the rows from the second table with each row of the first table. So, in the joined table, there are the same amount of rows as the amount of rows in the two tables multiplied. We're currently not sure when this whether or not this will be useful to our project.
+	
+chanC & sofatV -- 2019-10-24 8:40
+Worked on making flask app working
+	- Connected templates with backend functions for login; needed for demo and MVP purposes
+
+zhangM -- 2019-10-24 8:40
+Update search function: now works 
+	- with command line arguments; will be useful later for displaying user's content
+	
+chenH -- 2019-10-24 8:40
+Finalized front-end for welcome, sign in, and sign up pages
+	- starting templates for all blogs and singular posts
+	- chanC & sofatV took charge on flask app to get back on track
