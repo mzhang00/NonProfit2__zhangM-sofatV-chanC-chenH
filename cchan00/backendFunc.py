@@ -69,7 +69,10 @@ def testEditPost():
     print(editPost("cchan00",0,"hello2"))
     print(editPost("cchan00",1,"boop2"))
 
-
+#testAddUser()
+#testUserValid()
+#testAddPost()
+testEditPost()
 
 
 db.commit() #save changes
