@@ -14,7 +14,7 @@ def login():
 @app.route('/signup')
 
 def signup():
-    return render_template("auth.html")
+    return render_template("create.html")
 
 @app.route('/create')
 
