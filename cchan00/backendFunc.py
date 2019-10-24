@@ -13,7 +13,7 @@ def addUser(username,password):
     return True;
 
 def addPost(username,content):
-    foo = c.execute ("SELECT posID FROM posts;")
+    foo = c.execute ("SELECT postID FROM posts;")
     counter = -1;
     for idx in foo:
         if idx[0] > counter:
@@ -23,7 +23,7 @@ def addPost(username,content):
     return True;
     
 def editPost(username,postID,content):
-    foo = c.execute ("SELECT verID from posts WHERE posID = " + str(postID) + ";")
+    foo = c.execute ("SELECT verID from posts WHERE postID = " + str(postID) + ";")
     counter = -1;
     for idx in foo:
         if idx[0] > counter:
@@ -53,7 +53,23 @@ db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
 c = db.cursor()               #facilitate db ops
 
 
-print (userValid("cchan00","K"))
+def testAddUser():
+    print(addUser("cchan00","oogabooga"))
+    print(addUser("cchan00","k"))
+
+def testUserValid():
+    print(userValid("cchan00","k"))
+    print(userValid("cchan00","oogabooga"))
+
+def testAddPost():
+    print(addPost("cchan00","hello"))
+    print(addPost("cchan00","boop"))
+
+def testEditPost():
+    print(editPost("cchan00",0,"hello2"))
+    print(editPost("cchan00",1,"boop2"))
+
+
 
 
 db.commit() #save changes
