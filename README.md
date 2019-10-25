@@ -16,9 +16,9 @@ $ pip3 install flask
 
 In the case that you can not use pip3 to run the app, you can crank up a virtual environment
 
-''' 
+``` 
 $ python3 -m venv <name>
-'''
+```
 
 With this, you have created a virtual environment that you want to activate in the home directory.
 
