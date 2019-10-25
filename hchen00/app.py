@@ -26,6 +26,22 @@ def create():
 def auth():
     return ''
 
+@app.route('/home')
+
+def home():
+    return render_template('homepage.html')
+
+@app.route('/profile')
+
+def profile():
+    return render_template('profile.html')
+
+@app.route('/search')
+
+def search():
+    return render_template("results.html")
+
+
 if __name__ == '__main__':
     app.debug = True
     app.run()
