@@ -56,4 +56,6 @@ chenH -- 2019-10-23 19:50
 Finished adding templates and started adding search 
 	-added results page template
 	-added search forms to homepage, profile, and results template
-	-added routes to link to homepage and profile templates as well as a search function(to be implemented)
+	-added routes for homepage and profile templates as well as a search function(to be implemented)
+	-results page can link back to profile and homepage
+	-profile and homepage can link to each other 
