@@ -7,15 +7,33 @@ DB_FILE="discobandit.db"
 db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
 c = db.cursor()
 
+#basic function for searching for an item in a table and printing it out
 def searchBlog(query):
     q = "SELECT average FROM stu_avg WHERE id =" + str(query) + ";"
     foo = c.execute(q)
     return str(foo.fetchall()[0])[1:-2]
 
 #print(sys.argv[1])
-print(searchBlog(sys.argv[1]))
+#print(searchBlog(sys.argv[1]))
 
-#def searchBlogArgs():
-#    return searchBlog(sys.argv[1])
+#basic function to check if password and username match
+def checkCreds(user, passw):
+    q = "SELECT password FROM users WHERE username ='" + str(user) + "';"
+    foo = c.execute(q)
+    return str(foo.fetchall()[0])[2:-3] == passw
 
-#print(searchBlogArgs)
+print(checkCreds('cchan00', 'oogabooga'))
+print(checkCreds('cchan00', 'oogaboogA'))
+print(checkCreds('cchan00', 'oogaboogaa'))
+print(checkCreds('cchan00', '1'))
+
+#Print out the most recent blog post of a specific user
+def displayPost(user):
+    q = "SELECT postID, verID, content FROM posts WHERE username ='" + str(user) + "';"
+    foo = c.execute(q)
+    return foo.fetchall()
+
+#print(displayPost('cchan00'))
+
+#random comments for later
+#need a timestamp for the post
