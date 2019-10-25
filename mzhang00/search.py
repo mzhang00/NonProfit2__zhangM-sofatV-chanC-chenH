@@ -22,16 +22,25 @@ def checkCreds(user, passw):
     foo = c.execute(q)
     return str(foo.fetchall()[0])[2:-3] == passw
 
-print(checkCreds('cchan00', 'oogabooga'))
-print(checkCreds('cchan00', 'oogaboogA'))
-print(checkCreds('cchan00', 'oogaboogaa'))
-print(checkCreds('cchan00', '1'))
+# print(checkCreds('cchan00', 'oogabooga'))
+# print(checkCreds('cchan00', 'oogaboogA'))
+# print(checkCreds('cchan00', 'oogaboogaa'))
+# print(checkCreds('cchan00', '1'))
 
 #Print out the most recent blog post of a specific user
 def displayPost(user):
     q = "SELECT postID, verID, content FROM posts WHERE username ='" + str(user) + "';"
     foo = c.execute(q)
-    return foo.fetchall()
+    tuples = foo.fetchall()
+    entries = []
+    counter = 0
+    for atuple in tuples:
+        if atuple[0] < counter:
+            entries[atuple[0]] = atuple[2]
+        else:
+            entries.append(atuple[2])
+            counter += 1
+    return entries
 
 #print(displayPost('cchan00'))
 
