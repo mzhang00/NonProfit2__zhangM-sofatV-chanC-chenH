@@ -52,10 +52,17 @@ Finalized front-end for welcome, sign in, and sign up pages
 	- started templates for the profile and the homepage
 	- chanC & sofatV took charge on flask app to implement user authentication and account management
 
-chenH -- 2019-10-23 19:50
+chenH -- 2019-10-24 19:50
 Finished adding templates and started adding search 
 	-added results page template
 	-added search forms to homepage, profile, and results template
 	-added routes for homepage and profile templates as well as a search function(to be implemented)
 	-results page can link back to profile and homepage
 	-profile and homepage can link to each other 
+	
+zhangM -- 2019-10-24 22:00
+Update the backend with functions to display entries from blogs.
+Specifically made three new functions:
+	- One to verify the log in information for a user based on the username and password stored in the database
+	- One to display every single entry of a chosen user's blog
+	- One that renders html code that will be able to be incorporated directly into the templates to display the user's blog posts
