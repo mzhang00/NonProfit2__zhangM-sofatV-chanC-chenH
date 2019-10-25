@@ -1,4 +1,4 @@
-from flask import Flask, render_template 
+from flask import Flask, render_template,request,redirect,session
 app = Flask(__name__)
 
 @app.route('/')
@@ -11,6 +11,11 @@ def root():
 def login():
     return render_template("auth.html")
 
+@app.route('/error')
+
+def error():
+    return render_template("error.html")
+
 @app.route('/signup')
 
 def signup():
@@ -19,12 +24,12 @@ def signup():
 @app.route('/create')
 
 def create():
-    return ''
+    return redirect('/login')
 
 @app.route('/auth')
 
 def auth():
-    return ''
+    return redirect('/home')
 
 @app.route('/home')
 
@@ -40,6 +45,11 @@ def profile():
 
 def search():
     return render_template("results.html")
+
+@app.route('/logout')
+
+def logout():
+    return redirect('/')
 
 
 if __name__ == '__main__':
