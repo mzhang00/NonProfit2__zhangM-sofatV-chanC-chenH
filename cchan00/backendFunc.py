@@ -1,6 +1,5 @@
 
 import sqlite3   #enable control of an sqlite database
-import csv       #facilitate CSV I/O
 
 
 
@@ -10,6 +9,7 @@ def addUser(username,password):
         if uName[0] == username:
             return False;
     c.execute("INSERT INTO users VALUES ('" + username + "','" + password + "')")
+    db.commit()
     return True;
 
 def addPost(username,content):
@@ -20,6 +20,7 @@ def addPost(username,content):
             counter = idx[0]
     counter+=1
     c.execute("INSERT INTO posts VALUES ('" + username + "'," + str(counter) + ",0,'" + content + "');")
+    db.commit()
     return True;
     
 def editPost(username,postID,content):
@@ -32,6 +33,7 @@ def editPost(username,postID,content):
         return addPost(username,content)
     counter+=1;
     c.execute("INSERT INTO posts VALUES ('" + username + "'," + str(postID) + "," + str(counter) + ",'" + content + "');")
+    db.commit()
     return True
     
 
