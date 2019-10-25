@@ -44,5 +44,13 @@ def displayPost(user):
 
 #print(displayPost('cchan00'))
 
+def renderPosts(listofentries, user):
+    final = "Welcome to " + user + """'s Blog!<br><br>"""
+    for each in listofentries:
+        final = final + each + """<br><br>"""
+    return final
+
+print(renderPosts(displayPost('cchan00'), 'cchan00'))
+
 #random comments for later
 #need a timestamp for the post
