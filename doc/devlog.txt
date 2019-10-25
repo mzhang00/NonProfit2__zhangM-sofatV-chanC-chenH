@@ -83,3 +83,7 @@ chanC -- 2019-10-23 23:31
 	-login
 	-signup
 	-basic templates for functionality
+	
+chenH -- 2019-10-24 23:40
+	-modified sign in/signout pages to be more navigable
+	-added logout to homepage and profile page
