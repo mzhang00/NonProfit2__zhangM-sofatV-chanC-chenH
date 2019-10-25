@@ -87,3 +87,6 @@ chanC -- 2019-10-23 23:31
 chenH -- 2019-10-24 23:40
 	-modified sign in/signout pages to be more navigable
 	-added logout to homepage and profile page
+	
+sofatV -- 2019-10-25 8:23
+	-uploaded new site map

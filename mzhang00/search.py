@@ -40,6 +40,7 @@ def displayPost(user):
         else:
             entries.append(atuple[2])
             counter += 1
+    entries.reverse()
     return entries
 
 #print(displayPost('cchan00'))

@@ -3,7 +3,7 @@
   <head>
   </head>
   <body>
-    signed up
+    login failed
     <form action='/'>
       <input type="submit" value="boop">
     </form>
