@@ -16,6 +16,9 @@ chenH -- 2019-10-21 0:00
     - Wrote out core components and functions
     - Created component map
 
+chanC -- 2019-10-21 0:00
+	-outlined database tables
+
 chenH -- 2019-10-21 22:00
     - Reviewed design doc, made changes to core features to show minimum viable product
     - Modified component map
@@ -24,6 +27,14 @@ chenH -- 2019-10-21 22:00
 
 zhangM -- 2019-10-21 23:00
     - Finished site layout drawings
+
+chanC -- 2019-10-22 24:12
+	-Finished backend functions to work with database:
+	-addUser(username, password)
+	-userValid(username, password)
+	-addPost(username,content)
+	-editPost(username,postID,content)
+	
 
 sofatV -- 2019-10-23 8:00
 Lessons from Article 
@@ -66,3 +77,9 @@ Specifically made three new functions:
 	- One to verify the log in information for a user based on the username and password stored in the database
 	- One to display every single entry of a chosen user's blog
 	- One that renders html code that will be able to be incorporated directly into the templates to display the user's blog posts
+
+chanC -- 2019-10-23 23:31
+	-Finished basic flask app with:
+	-login
+	-signup
+	-basic templates for functionality
