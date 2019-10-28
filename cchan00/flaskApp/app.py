@@ -9,10 +9,9 @@ c = db.cursor()               #facilitate db ops
 
 app.secret_key = os.urandom(32)
 
-db.execute("CREATE TABLE IF NOT EXISTS users (username,password)")
+db.execute("CREATE TABLE IF NOT EXISTS users (username TEXT, password TEXT)")
 
-db.execute("CREATE TABLE IF NOT EXISTS posts (username,postID,verID,title,content)")
-
+db.execute("CREATE TABLE IF NOT EXISTS posts (username TEXT, postID INTEGER ,verID INTEGER,title TEXT,content TEXT)")
 
 @app.route('/')
 
@@ -54,11 +53,11 @@ def addUser(username,password):
     foo = c.execute ("SELECT username FROM users;")
     for uName in foo:
         if uName[0] == username:
-            return False;
+            return False
     c.execute("INSERT INTO users VALUES ('" + username + "','" + password + "')")
     print("insert into users")
     db.commit()
-    return True;
+    return True
 
 @app.route('/auth')
 
@@ -79,8 +78,8 @@ def userValid(username,password):
             boo = c.execute("SELECT password FROM users WHERE username = '" + username + "';")
             for passW in boo:
                 if (passW[0] == password):
-                    return True;
-    return False;
+                    return True
+    return False
 
 @app.route('/home')
 
@@ -88,8 +87,27 @@ def home():
     print(session)
     print('home')
     if "username" in session.keys():
+        entries = []
+        titles = []
+        users = []
+        number = 0
+        for entry in c.execute("SELECT content FROM posts"):
+            entries.append(''.join(entry))
+            number+=1
+        for title in c.execute("SELECT title FROM posts"):
+            titles.append(''.join(title))
+        for userns in c.execute("SELECT username FROM posts"):
+            users.append(''.join(userns))
+        entries.reverse()
+        titles.reverse()
+        users.reverse()
         print("Logged In: " + session['username'])
-        return render_template("homepage.html", user = session['username'])
+        return render_template("homepage.html",
+                                                   user = session['username'],
+                                                   usern = users,
+                                                   title = titles,
+                                                   entry = entries,
+                                                   table = number)
     else:
         return redirect('/login')
 
@@ -99,8 +117,21 @@ def profile():
     print(session)
     print('profile')
     if "username" in session.keys():
-        e = renderPosts(displayPost(session['username']), session['username'])
-        return render_template('profile.html', entry = e, user = session['username'])
+        entries = []
+        titles = []
+        number = 0
+        for entry in c.execute("SELECT content,username FROM posts"):
+            if ''.join(entry[1]) == session['username']:
+                entries.append(''.join(entry[0]))
+                number+=1
+        for title in c.execute("SELECT title,username FROM posts"):
+            if ''.join(title[1]) == session['username']:
+                titles.append(''.join(title[0]))
+        entries.reverse()
+        titles.reverse()
+        print(entries)
+        print(titles)
+        return render_template('profile.html', entry = entries, user = session['username'], title = titles, table = number)
     else:
         return redirect('/login')
 
@@ -142,7 +173,7 @@ def createEntry():
         if (addPost(session['username'], request.args['title'], request.args['entry'])):
             print("added post!")
     return redirect('/profile')
-        
+
 def addPost(username, title, content):
     print("'" + username + "," + title + "," + content + "'")
     foo = c.execute ("SELECT postID FROM posts;")
@@ -151,10 +182,39 @@ def addPost(username, title, content):
         if idx[0] > counter:
             counter = idx[0]
     counter+=1
-    print("INSERT INTO posts VALUES ('" + username + "'," + str(counter) + ",0,'" + title + "','" + content + "');")
     c.execute("INSERT INTO posts VALUES ('" + username + "'," + str(counter) + ",0,'" + title + "','" + content + "');")
     db.commit()
-    return True;
+    return True
+
+@app.route('/edit')
+
+def edit():
+    idx = int(request.args['numPosts']) - int(request.args['idx']) - 1
+    return render_template('edit.html', postID = idx, oldTitle = request.args['oldTitle'], oldContent = request.args['oldContent'])
+
+@app.route('/editE')
+
+def editEntry():
+    print(session)
+    print("edit entry")
+    if "username" in session.keys():
+        if (editPost(session["username"], request.args['postID'], request.args['title'], request.args['entry'])):
+            print("edited post!")
+    return redirect('/profile')
+    
+def editPost(username,postID,title,content):
+    foo = c.execute ("SELECT verID from posts WHERE postID = " + str(postID) + ";")
+    counter = -1
+    for idx in foo:
+        if idx[0] > counter:
+            counter = idx[0]
+    if counter == -1:
+        return addPost(username,title,content)
+    counter+=1
+    c.execute("INSERT INTO posts VALUES ('" + username + "'," + str(postID) + "," + str(counter) + ",'" + content + "');")
+    db.commit()
+    return True
+    
 
 @app.route('/search')
 
@@ -164,14 +224,8 @@ def search():
 @app.route('/logout')
 
 def logout():
-    print("loging out: ")
-    print(session)
-    print(session.keys())
-    print(session['username'])
     session.pop('username')
     session.pop('password')
-    print(session)
-    print(session.keys())
     return redirect('/')
 
 if __name__ == '__main__':
