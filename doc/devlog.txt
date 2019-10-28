@@ -90,7 +90,12 @@ chenH -- 2019-10-24 23:40
 	
 sofatV -- 2019-10-25 8:23
 	-uploaded new site map
-
+	
+chenH -- 2019-10-27 20:00
+	-integrated login functionality with front end templates
+	-finalized user login, user create account, error pages
+	-finished add template
+	
 zhangM -- 2019-10-27 23:00
 	-start work on search function, edit readme
 	
@@ -109,3 +114,19 @@ zhangM -- 2019-10-28 2:30
 chanC -- 2019-10-27 3:30
 	-finished edit post feature
 	-updated edit functions and templates to work together
+	
+chenH -- 2019-10-27 23:00
+Finalizing templates, finished chronological display
+	-finished display functions for user profile(users own blog entries displayed)
+	-finished display functions for the homepage(blog entries from existing accounts all displayed) 
+	-laid out display for editing page
+	
+chenH --2019-10-28 1:00
+Completed search function
+	-finished search routing and template
+	-completed search function by user, by title and by keyword(word in entry)
+	-updated search forms to dropdown menus
+	-updated design doc, added title to database table
+	
+
+
