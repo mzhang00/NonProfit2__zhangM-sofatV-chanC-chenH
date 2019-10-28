@@ -106,6 +106,6 @@ zhangM -- 2019-10-28 2:30
 	-add buttons on add/edit pages to return to profile
 	-add flashed messages for successful log-ins and log-outs
 	
-chanC -- 2019-10-27 23:23
+chanC -- 2019-10-27 3:30
 	-finished edit post feature
 	-updated edit functions and templates to work together
