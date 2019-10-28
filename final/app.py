@@ -135,7 +135,7 @@ def profile():
         entries.reverse()
         titles.reverse()
         print(entries)
-        print(title)
+        print(titles)
         return render_template('profile.html', entry = entries, user = session['username'], title = titles, table = number)
     else:
         return redirect('/login')
@@ -166,7 +166,6 @@ def addPost(username, title, content):
         if idx[0] > counter:
             counter = idx[0]
     counter+=1
-    print("INSERT INTO posts VALUES ('" + username + "'," + str(counter) + ",0,'" + title + "','" + content + "');")
     c.execute("INSERT INTO posts VALUES ('" + username + "'," + str(counter) + ",0,'" + title + "','" + content + "');")
     db.commit()
     return True
@@ -174,23 +173,29 @@ def addPost(username, title, content):
 @app.route('/edit')
 
 def edit():
-    return render_template('edit.html')
+    idx = int(request.args['numPosts']) - int(request.args['idx']) - 1
+    return render_template('edit.html', postID = idx, oldTitle = request.args['oldTitle'], oldContent = request.args['oldContent'])
 
 @app.route('/editE')
 
 def editEntry():
-    return ''
+    print(session)
+    print("edit entry")
+    if "username" in session.keys():
+        if (editPost(session["username"], request.args['postID'], request.args['title'], request.args['entry'])):
+            print("edited post!")
+    return redirect('/profile')
     
-def editPost(username,postID,content):
+def editPost(username,postID,title,content):
     foo = c.execute ("SELECT verID from posts WHERE postID = " + str(postID) + ";")
     counter = -1
     for idx in foo:
         if idx[0] > counter:
             counter = idx[0]
     if counter == -1:
-        return addPost(username,content)
+        return addPost(username,title,content)
     counter+=1
-    c.execute("INSERT INTO posts VALUES ('" + username + "'," + str(postID) + "," + str(counter) + ",'" + content + "');")
+    c.execute("INSERT INTO posts VALUES ('" + username + "'," + str(postID) + "," + str(counter) + ",'" + title + "','" + content + "');")
     db.commit()
     return True
     
@@ -254,13 +259,8 @@ def search():
 
 def logout():
     print("logging out: ")
-    print(session)
-    print(session.keys())
-    print(session['username'])
     session.pop('username')
     session.pop('password')
-    print(session)
-    print(session.keys())
     flash('You were successfully logged out!')
     return redirect('/')
 
