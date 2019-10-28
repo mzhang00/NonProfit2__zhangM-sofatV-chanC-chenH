@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+
+<html>
+  <head>
+    <title>Add an entryr</title>
+  </head>
+  <body>
+    <h1>Edit Entry for {{user}}</h1>
+    <form action = '/editE' id = "Eentry">
+        Add Title:
+        <textarea type  = "text" rows = '1' cols = '16' form ='Eentry' name = 'title'>{{title}}</textarea>
+        <br>
+        Add Text:
+        <br>
+        <br>
+        <textarea type = "text" rows = "8" cols = "100" form = "Eentry" name = "entry">{{entry}}</textarea>
+        <br>
+        <input type = "submit" value = 'Create Entry'>
+    </form>
+  </body>
+</html>

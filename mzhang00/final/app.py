@@ -135,6 +135,27 @@ def profile():
     else:
         return redirect('/login')
 
+def displayPost(user):
+    q = "SELECT postID, verID, title, content FROM posts WHERE username ='" + str(user) + "';"
+    foo = c.execute(q)
+    tuples = foo.fetchall()
+    entries = []
+    counter = 0
+    for atuple in tuples:
+        if atuple[0] < counter:
+            entries[atuple[0]] = atuple[2]
+        else:
+            entries.append(atuple[2])
+            counter += 1
+    entries.reverse()
+    return entries
+
+def renderPosts(listofentries, user):
+    final = "Welcome to " + user + """'s Blog!<br></br>"""
+    for each in listofentries:
+        final = final + each + """<br></br>"""
+    return final
+
 @app.route('/add')
 
 def add():
@@ -193,58 +214,8 @@ def editPost(username,postID,content):
 @app.route('/search')
 
 def search():
-    query = request.args['search']
-    searchType = request.args['type']
-    print("Search")
-    print(request.args)
-    entries = []
-    titles = []
-    users = []
-    ents = []
-    tits = []
-    uses = []
-    number = 0
-    msg = ''
-    for entry in c.execute("SELECT content FROM posts"):
-        entries.append(''.join(entry))
-    for title in c.execute("SELECT title FROM posts"):
-        titles.append(''.join(title))
-    for userns in c.execute("SELECT username FROM posts"):
-        users.append(''.join(userns))
-    entries.reverse()
-    titles.reverse()
-    users.reverse()
-    length = len(users)
-    if searchType == 'userSearch':
-        for x in range(length):
-            if query in users[x]:
-                uses.append(users[x])
-                tits.append(titles[x])
-                ents.append(entries[x])
-                number+=1
-    if searchType == 'titleSearch':
-        for x in range(length):
-            if query in titles[x]:
-                uses.append(users[x])
-                tits.append(titles[x])
-                ents.append(entries[x])
-                number+=1
-    if searchType == 'entrySearch':
-        for x in range(length):
-            if query in entries[x]:
-                uses.append(users[x])
-                tits.append(titles[x])
-                ents.append(entries[x])
-                number+=1
-    if number == 0:
-        msg = 'No results for "' + query + '"'
-    return render_template("results.html",
-                                               usern=uses,
-                                               title = tits,
-                                               entry = ents,
-                                               table = number,
-                                               msge = msg)
-                                               
+    return render_template("results.html")
+
 @app.route('/logout')
 
 def logout():

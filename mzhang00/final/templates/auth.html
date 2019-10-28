@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+
+<html>
+  <head>
+      <title>
+      Login
+      </title>
+  </head>
+  <body>
+    <h1>
+    Welcome!
+    </h1>
+    <form action = '/'>
+        <button type = "submit"> Back </button>
+    </form>
+    <br>{{msg}}<br>
+    <br>Login to an account<br>
+    <br>
+    <form action='/auth'>
+        Username:
+        <br>
+        <input type="text" name="username">
+        <br>
+        Password:
+        <br>
+        <input type="password" name="password">
+        <br>
+        <input type="submit" value="Login">
+    </form>
+  </body>
+</html>
