@@ -177,17 +177,17 @@ def createEntry():
         
 def addPost(username, title, content):
     foo = c.execute ("SELECT postID FROM posts;")
-    counter = -1
+    counter = -1;
     for idx in foo:
         if idx[0] > counter:
             counter = idx[0]
     counter+=1
     c.execute("INSERT INTO posts VALUES ('" + username + "'," + str(counter) + ",1,'" + title + "','" + content + "');")
     db.commit()
-    return True
+    return True;
 
 @app.route('/edit')
-    #return 
+    return 
 
 @app.route('/search')
 
