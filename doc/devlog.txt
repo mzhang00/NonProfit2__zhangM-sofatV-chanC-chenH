@@ -99,27 +99,16 @@ chenH -- 2019-10-27 20:00
 zhangM -- 2019-10-27 23:00
 	-start work on search function, edit readme
 	
-chanC -- 2019-10-27 23:23
-	-fixed logout bug
-	-finished up adding posts feature
-	-updated add functions and templates to work together
-	
-zhangM -- 2019-10-28 2:30
-	-merge all code into one directory
-	-fix bug that caused crash upon signing up with an invalid username/password
-	-add more specific error messages for invalid sign ups
-	-add buttons on add/edit pages to return to profile
-	-add flashed messages for successful log-ins and log-outs
-	
-chanC -- 2019-10-27 3:30
-	-finished edit post feature
-	-updated edit functions and templates to work together
-	
 chenH -- 2019-10-27 23:00
 Finalizing templates, finished chronological display
 	-finished display functions for user profile(users own blog entries displayed)
 	-finished display functions for the homepage(blog entries from existing accounts all displayed) 
 	-laid out display for editing page
+	
+chanC -- 2019-10-27 23:23
+	-fixed logout bug
+	-finished up adding posts feature
+	-updated add functions and templates to work together
 	
 chenH --2019-10-28 1:00
 Completed search function
@@ -128,5 +117,19 @@ Completed search function
 	-updated search forms to dropdown menus
 	-updated design doc, added title to database table
 	
+zhangM -- 2019-10-28 2:30
+	-merge all code into one directory
+	-fix bug that caused crash upon signing up with an invalid username/password
+	-add more specific error messages for invalid sign ups
+	-add buttons on add/edit pages to return to profile
+	-add flashed messages for successful log-ins and log-outs
+	
+chanC -- 2019-10-28 3:30
+	-finished edit post feature
+	-updated edit functions and templates to work together
+
+chanC -- 2019-10-28 4:15
+	-finished/cleaned up app
+	-fixed issued where all past versions of a post were displayed instead of just the most recent version
 
 
