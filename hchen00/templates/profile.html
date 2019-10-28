@@ -35,7 +35,8 @@
       {{entry[x]}}<br>
       <br>
       <form action = '/edit'>
-          <button type = 'submit'> Edit entry </button>
+        <input type = 'hidden' id = 'postid' name = 'postid' value = {{postid[x]|int}}>
+        <input type = 'submit' value = 'Edit entry'>
       </form>
       <br>
       <br>

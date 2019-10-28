@@ -2,20 +2,21 @@
 
 <html>
   <head>
-    <title>Add an entryr</title>
+    <title>Edit an entry</title>
   </head>
   <body>
+    <form action = '/profile'>
+        <button type = 'submit'>Back</button>
+    </form>
     <h1>Edit Entry for {{user}}</h1>
     <form action = '/editE' id = "Eentry">
-        Add Title:
-        <textarea type  = "text" rows = '1' cols = '16' form ='Eentry' name = 'title'>{{title}}</textarea>
+        <h4>Edit Title:</h4>
+        <textarea type  = "text" rows = '1' cols = '56' form ='Eentry' name = 'title'>{{title}}</textarea>
         <br>
-        Add Text:
-        <br>
-        <br>
+        <h4>Edit Text:</h4>
         <textarea type = "text" rows = "8" cols = "100" form = "Eentry" name = "entry">{{entry}}</textarea>
         <br>
-        <input type = "submit" value = 'Create Entry'>
+        <input type = "submit" value = 'Edit Entry'>
     </form>
   </body>
 </html>

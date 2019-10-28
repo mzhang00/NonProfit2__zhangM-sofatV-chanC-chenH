@@ -124,20 +124,23 @@ def profile():
         entries = []
         titles = []
         number = 0
-        for entry in c.execute("SELECT content,username FROM posts"):
+        idpost = []
+        for entry in c.execute("SELECT content,username,postID FROM posts"):
             if ''.join(entry[1]) == session['username']:
                 entries.append(''.join(entry[0]))
+                idpost.append(entry[2])
                 number+=1
         for title in c.execute("SELECT title,username FROM posts"):
             if ''.join(title[1]) == session['username']:
                 titles.append(''.join(title[0]))
         entries.reverse()
         titles.reverse()
+        idpost.reverse()
         print("profile")
         print(entries)
         print("profile")
         print(titles)
-        return render_template('profile.html', entry = entries, user = session['username'], title = titles, table = number)
+        return render_template('profile.html', entry = entries, user = session['username'], title = titles, table = number, postid= idpost)
     else:
         return redirect('/login')
 
@@ -174,11 +177,21 @@ def addPost(username, title, content):
 @app.route('/edit')
 
 def edit():
-    return render_template('edit.html')
+    print('edit')
+    print(request.args)
+    entry = ''
+    title = ''
+    di = request.args['postid']
+    for row in c.execute("SELECT content,title FROM posts WHERE postID =" + di):
+        entry = ''.join(row[0])
+        title = ''.join(row[1])
+    return render_template('edit.html', entry = entry, title = title, user = session['username'])
 
 @app.route('/editE')
 
 def editEntry():
+    print('editentry')
+    print(request.args)
     return ''
     
 def editPost(username,postID,content):
@@ -198,7 +211,7 @@ def editPost(username,postID,content):
 @app.route('/search')
 
 def search():
-    query = request.args['search']
+    query = request.args['search'].lower()
     searchType = request.args['type']
     print("Search")
     print(request.args)
@@ -222,20 +235,20 @@ def search():
     length = len(users)
     if searchType == 'userSearch':
         for x in range(length):
-            if query in users[x]:
+            if query in users[x].lower():
                 uses.append(users[x])
                 tits.append(titles[x])
                 ents.append(entries[x])
                 number+=1
     if searchType == 'titleSearch':
         for x in range(length):
-            if query in titles[x]:
+            if query in titles[x].lower():
                 uses.append(users[x])
                 tits.append(titles[x])
                 ents.append(entries[x])
                 number+=1
     if searchType == 'entrySearch':
-        for x in range(length):
+        for x in range(length).lower():
             if query in entries[x]:
                 uses.append(users[x])
                 tits.append(titles[x])
