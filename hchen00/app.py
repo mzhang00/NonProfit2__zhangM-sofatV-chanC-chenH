@@ -203,9 +203,9 @@ def displayPost(user):
     return entries
 
 def renderPosts(listofentries, user):
-    final = "Welcome to " + user + """'s Blog!<br><br>"""
+    final = "Welcome to " + user + """'s Blog!<br></br>"""
     for each in listofentries:
-        final = final + each + """<br><br>"""
+        final = final + each + """<br></br>"""
     return final
 
 @app.route('/add')
