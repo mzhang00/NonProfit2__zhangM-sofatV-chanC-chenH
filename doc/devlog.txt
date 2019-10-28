@@ -116,9 +116,9 @@ chanC -- 2019-10-27 3:30
 	-updated edit functions and templates to work together
 	
 chenH -- 2019-10-27 23:00
-Finalizing templates
-	-finished display functions for user profile
-	-finished display functions for the homepage
+Finalizing templates, finished chronological display
+	-finished display functions for user profile(users own blog entries displayed)
+	-finished display functions for the homepage(blog entries from existing accounts all displayed) 
 	-laid out display for editing page
 	
 chenH --2019-10-28 1:00
