@@ -153,20 +153,20 @@ def add():
 def createEntry():
     print(session)
     print('create entry')
-    if 'username' in session.keys():
-        if (addPost(session['username'], request.args['title'], request.args['entry'])):
-            print("added post!")
-    return redirect('/profile')
-
+    print(request.args['title'])
+    print(request.args['entry'])
+    if (addPost(session['username'], request.args['title'], request.args['entry'])):
+        print("added post!")
+        return redirect('/profile')
+        
 def addPost(username, title, content):
-    print("'" + username + "," + title + "," + content + "'")
     foo = c.execute ("SELECT postID FROM posts;")
     counter = -1
     for idx in foo:
         if idx[0] > counter:
             counter = idx[0]
     counter+=1
-    c.execute("INSERT INTO posts VALUES ('" + username + "'," + str(counter) + ",0,'" + title + "','" + content + "');")
+    c.execute("INSERT INTO posts VALUES ('" + username + "'," + str(counter) + ",1,'" + title + "','" + content + "');")
     db.commit()
     return True
 
