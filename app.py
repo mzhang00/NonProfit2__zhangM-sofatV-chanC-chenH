@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, session, redirect, url_for, flash
 import os
-import sqlite3 
+import sqlite3
 app = Flask(__name__)
 DB_FILE="discobandit.db"
 
@@ -52,15 +52,15 @@ def create():
         return redirect(url_for('loginE', msge = "Signed up succesfully!"))
     else:
         return redirect(url_for("error", msge = "username in use"))
-    
+
 def addUser(username,password):
     foo = c.execute ("SELECT username FROM users;")
     for uName in foo:
         if uName[0] == username:
             return False
-        c.execute("INSERT INTO users VALUES ('" + username + "','" + password + "')")
-        print("insert into users")
-        db.commit()
+    c.execute("INSERT INTO users VALUES ('" + username + "','" + password + "')")
+    print("insert into users")
+    db.commit()
     return True
 
 @app.route('/auth')
@@ -103,10 +103,10 @@ def home():
             titles.append(''.join(title))
         for userns in c.execute("SELECT username FROM posts"):
             users.append(''.join(userns))
-            entries.reverse()
-            titles.reverse()
-            users.reverse()
-            print("Logged In: " + session['username'])
+        entries.reverse()
+        titles.reverse()
+        users.reverse()
+        print("Logged In: " + session['username'])
         return render_template("homepage.html",
                                user = session['username'],
                                usern = users,
@@ -154,7 +154,7 @@ def getMostRecent(c, postID):
         if mi[2] == ID:
             return li
     return -1
-                
+
 
 @app.route('/add')
 
@@ -174,16 +174,16 @@ def createEntry():
     if (addPost(session['username'], request.args['title'], request.args['entry'])):
         print("added post!")
         return redirect('/profile')
-    
+
 def addPost(username, title, content):
     foo = c.execute ("SELECT postID FROM posts;")
     counter = -1
     for idx in foo:
         if idx[0] > counter:
             counter = idx[0]
-            counter+=1
-            c.execute("INSERT INTO posts VALUES ('" + username + "'," + str(counter) + ",1,'" + title + "','" + content + "');")
-            db.commit()
+        counter+=1
+        c.execute("INSERT INTO posts VALUES ('" + username + "'," + str(counter) + ",1,'" + title + "','" + content + "');")
+        db.commit()
     return True
 
 @app.route('/edit')
@@ -237,10 +237,10 @@ def search():
         titles.append(''.join(title))
     for userns in c.execute("SELECT username FROM posts"):
         users.append(''.join(userns))
-        entries.reverse()
-        titles.reverse()
-        users.reverse()
-        length = len(users)
+    entries.reverse()
+    titles.reverse()
+    users.reverse()
+    length = len(users)
     if searchType == 'userSearch':
         for x in range(length):
             if query in users[x]:
@@ -284,5 +284,5 @@ if __name__ == '__main__':
     app.debug = True
     DB_FILE="discobandit.db"
     db = sqlite3.connect('discobandit.db', check_same_thread=False)
-    c = db.cursor() 
+    c = db.cursor()
     app.run()
