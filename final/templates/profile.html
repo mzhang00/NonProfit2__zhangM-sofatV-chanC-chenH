@@ -23,7 +23,7 @@
     </select>
     <input type = "submit" value = "Search">
     <br>
-</form>
+  </form>
   <h1>profile</h1>
   <br>
   <form action = '/add'>
@@ -35,6 +35,10 @@
       {{entry[x]}}<br>
       <br>
       <form action = '/edit'>
+	<input type = "hidden" name = "idx" value = {{x}}>
+	<input type = "hidden" name = "numPosts" value = {{table}}>
+	<input type = "hidden" name = "oldTitle" value = {{title[x]}}>
+	<input type = "hidden" name = "oldContent" value = {{entry[x]}}>
           <button type = 'submit'> Edit entry </button>
       </form>
       <br>
