@@ -94,9 +94,18 @@ sofatV -- 2019-10-25 8:23
 zhangM -- 2019-10-27 23:00
 	-start work on search function, edit readme
 	
+chanC -- 2019-10-27 23:23
+	-fixed logout bug
+	-finished up adding posts feature
+	-updated add functions and templates to work together
+	
 zhangM -- 2019-10-28 2:30
 	-merge all code into one directory
 	-fix bug that caused crash upon signing up with an invalid username/password
 	-add more specific error messages for invalid sign ups
 	-add buttons on add/edit pages to return to profile
 	-add flashed messages for successful log-ins and log-outs
+	
+chanC -- 2019-10-27 3:30
+	-finished edit post feature
+	-updated edit functions and templates to work together
