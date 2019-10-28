@@ -168,6 +168,8 @@ def userValid(username,password):
 @app.route('/home')
 
 def home():
+    print(session)
+    print('home')
     if "username" in session.keys():
         print("Logged In: " + session['username'])
         return render_template("homepage.html", user = session['username'])
@@ -177,14 +179,16 @@ def home():
 @app.route('/profile')
 
 def profile():
+    print(session)
+    print('profile')
     if "username" in session.keys():
         e = renderPosts(displayPost(session['username']), session['username'])
-        return render_template('profile.html', entry = e)
+        return render_template('profile.html', entry = e, user = session['username'])
     else:
         return redirect('/login')
 
 def displayPost(user):
-    q = "SELECT postID, verID, content FROM posts WHERE username ='" + str(user) + "';"
+    q = "SELECT postID, verID, title, content FROM posts WHERE username ='" + str(user) + "';"
     foo = c.execute(q)
     tuples = foo.fetchall()
     entries = []
@@ -207,13 +211,20 @@ def renderPosts(listofentries, user):
 @app.route('/add')
 
 def add():
-    return render_template('add.html')
+    print(session)
+    print('add')
+    if 'username' in session.keys():
+        return render_template('add.html', user = session['username'])
 
 @app.route('/addE')
 
-def create():
-    if (addPost(session['username'], request.args['title'], request.args['entry'])):
-        return redirect('/profile')
+def createEntry():
+    print(session)
+    print('create entry')
+    if 'username' in session.keys():
+        if (addPost(session['username'], request.args['title'], request.args['entry'])):
+            print("added post!")
+            return redirect('/profile')
         
 def addPost(username, title, content):
     foo = c.execute ("SELECT postID FROM posts;")
