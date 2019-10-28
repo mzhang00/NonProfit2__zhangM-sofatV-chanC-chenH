@@ -14,7 +14,7 @@ Please make sure that your device is able to run a Flask app. If you do not have
 $ pip3 install flask 
 ```
 
-In the case that you can not use pip3 to run the app, you can crank up a virtual environment
+In the case that you can not use pip3 to install flask, you can crank up a virtual environment
 
 ``` 
 $ python3 -m venv <name>
