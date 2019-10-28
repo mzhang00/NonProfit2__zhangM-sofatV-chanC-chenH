@@ -165,13 +165,8 @@ def search():
 
 def logout():
     print("loging out: ")
-    print(session)
-    print(session.keys())
-    print(session['username'])
     session.pop('username')
     session.pop('password')
-    print(session)
-    print(session.keys())
     return redirect('/')
 
 if __name__ == '__main__':
