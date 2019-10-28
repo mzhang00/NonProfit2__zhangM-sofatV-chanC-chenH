@@ -126,6 +126,7 @@ Completed search function
 	-finished search routing and template
 	-completed search function by user, by title and by keyword(word in entry)
 	-updated search forms to dropdown menus
+	-updated design doc, added title to database table
 	
 
 
