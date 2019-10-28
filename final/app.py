@@ -43,6 +43,10 @@ def signup():
 def create():
     enteredU = request.args['username']
     enteredP = request.args['password']
+    if (enteredU == ""):
+        return redirect(url_for("error", msge = "please enter a non-empty username"))
+    if (enteredP == ""):
+        return redirect(url_for("error", msge = "please enter a non-empty password"))
     if (addUser(enteredU,enteredP)):
         print("add user: " + enteredU + " , " + enteredP)
         return redirect(url_for('loginE', msge = "Signed up succesfully!"))
@@ -244,7 +248,7 @@ def search():
                                                entry = ents,
                                                table = number,
                                                msge = msg)
-                                               
+
 @app.route('/logout')
 
 def logout():
