@@ -5,6 +5,13 @@
     <title>Homepage</title>
   </head>
   <body>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages %}
+        {{message}}
+      {% endfor %}
+    {% endif %}
+  {% endwith %}    
   Welcome {{user}}!
   <br>
   <form action = "/profile">
@@ -14,11 +21,16 @@
       <button type = 'submt'> Logout </button>
   </form>
   <br>
-  <form method = "get" action = "/search">
-      <input type = "text" name ="search">
-      <input type = "submit" value = "Search">
-      <br>
-  </form>
+  <form action = "/search">
+    <input type = "text" name ="search">
+    <select name = "type">
+        <option value = "userSearch">By Username</option>
+        <option value = "titleSearch">By Title</option>
+        <option value = "entrySearch">By Keyword</option>
+    </select>
+    <input type = "submit" value = "Search">
+    <br>
+</form>
   <h1>blogs</h1>
   <br>
   {% for x in range(table|int) %}

@@ -25,7 +25,22 @@
       <button type = 'submit'> Create entry </button>
   </form>
   <br><br>
-  <h2>{{title}}</h2>
-  {{entry}}
+  {% for x in range(table|int) %}
+      <h3> {{title[x]}} </h3>
+      {{entry[x]}}<br>
+      <br>
+      <form action = '/edit'>
+	<input type = "hidden" name = "idx" value = {{x}}>
+	<input type = "hidden" name = "numPosts" value = {{table}}>
+	<input type = "hidden" name = "oldTitle" value = {{title[x]}}>
+	<input type = "hidden" name = "oldContent" value = {{entry[x]}}>
+          <button type = 'submit'> Edit entry </button>
+      </form>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+  {% endfor %}
   </body>
 </html>

@@ -10,13 +10,6 @@
     <h1>
     Welcome!
     </h1>
-    {% with messages = get_flashed_messages() %}
-      {% if messages %}
-        {% for message in messages %}
-          {{message}}
-        {% endfor %}
-      {% endif %}
-    {% endwith %}
     <p>Login to an existing account or create a new account</p>
     <br>
     <form method = "get" action = "/login">

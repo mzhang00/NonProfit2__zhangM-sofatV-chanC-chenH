@@ -90,3 +90,13 @@ chenH -- 2019-10-24 23:40
 	
 sofatV -- 2019-10-25 8:23
 	-uploaded new site map
+
+zhangM -- 2019-10-27 23:00
+	-start work on search function, edit readme
+	
+zhangM -- 2019-10-28 2:30
+	-merge all code into one directory
+	-fix bug that caused crash upon signing up with an invalid username/password
+	-add more specific error messages for invalid sign ups
+	-add buttons on add/edit pages to return to profile
+	-add flashed messages for successful log-ins and log-outs

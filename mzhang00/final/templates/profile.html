@@ -2,16 +2,16 @@
 
 <html>
   <head>
-    <title>Homepage</title>
+    <title>My Profile</title>
   </head>
   <body>
   Welcome {{user}}!
   <br>
-  <form action = "/profile">
-      <button type = "submit"> My Profile </button>
+  <form action = "/home">
+      <button type = "submit"> Homepage </button>
   </form>
   <form action = "/logout">
-      <button type = 'submt'> Logout </button>
+      <button type = "submit"> Logout </button>
   </form>
   <br>
   <form method = "get" action = "/search">
@@ -19,12 +19,19 @@
       <input type = "submit" value = "Search">
       <br>
   </form>
-  <h1>blogs</h1>
+  <h1>profile</h1>
   <br>
+  <form action = '/add'>
+      <button type = 'submit'> Create entry </button>
+  </form>
+  <br><br>
   {% for x in range(table|int) %}
-      from <b>{{usern[x]}}</b> <br>
       <h3> {{title[x]}} </h3>
       {{entry[x]}}<br>
+      <br>
+      <form action = '/edit'>
+          <button type = 'submit'> Edit entry </button>
+      </form>
       <br>
       <br>
       <br>
