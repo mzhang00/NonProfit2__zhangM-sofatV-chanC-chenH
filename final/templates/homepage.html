@@ -5,6 +5,13 @@
     <title>Homepage</title>
   </head>
   <body>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages %}
+        {{message}}
+      {% endfor %}
+    {% endif %}
+  {% endwith %}    
   Welcome {{user}}!
   <br>
   <form action = "/profile">

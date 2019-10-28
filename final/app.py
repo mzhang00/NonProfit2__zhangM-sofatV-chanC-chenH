@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, session, redirect, url_for
+from flask import Flask, render_template, request, session, redirect, url_for, flash
 import os
 import sqlite3 
 app = Flask(__name__)
@@ -71,6 +71,7 @@ def auth():
     if (userValid(enteredU,enteredP)):
         session['username'] = enteredU
         session['password'] = enteredP
+        flash('You were successfully logged in!')
         return redirect('/home')
     else:
         return redirect(url_for('error', msge = "login failed"))
@@ -260,6 +261,7 @@ def logout():
     session.pop('password')
     print(session)
     print(session.keys())
+    flash('You were successfully logged out!')
     return redirect('/')
 
 if __name__ == '__main__':
