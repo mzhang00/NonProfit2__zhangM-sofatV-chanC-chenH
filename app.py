@@ -173,7 +173,7 @@ def createEntry():
     print(request.args['entry'])
     if (addPost(session['username'], request.args['title'], request.args['entry'])):
         print("added post!")
-        return redirect('/profile')
+    return redirect('/profile')
 
 def addPost(username, title, content):
     foo = c.execute ("SELECT postID FROM posts;")
@@ -181,15 +181,17 @@ def addPost(username, title, content):
     for idx in foo:
         if idx[0] > counter:
             counter = idx[0]
-        counter+=1
-        c.execute("INSERT INTO posts VALUES ('" + username + "'," + str(counter) + ",1,'" + title + "','" + content + "');")
-        db.commit()
+    counter+=1
+    c.execute("INSERT INTO posts VALUES ('" + username + "'," + str(counter) + ",1,'" + title + "','" + content + "');")
+    db.commit()
     return True
 
 @app.route('/edit')
 
 def edit():
     idx = int(request.args['numPosts']) - int(request.args['idx']) - 1
+    print("edit init")
+    print("old values : " +  request.args['oldTitle'] +" ," + request.args['oldContent'])
     return render_template('edit.html', postID = idx, oldTitle = request.args['oldTitle'], oldContent = request.args['oldContent'])
 
 @app.route('/editE')
