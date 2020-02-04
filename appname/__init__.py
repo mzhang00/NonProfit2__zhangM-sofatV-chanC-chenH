@@ -1,6 +1,9 @@
 from flask import Flask, render_template, request, session, redirect, url_for, flash
 import os
 import sqlite3
+os.path.dirname(__file__)
+DIR = os.path.dirname(__file__) or '.'
+DIR += '/'
 app = Flask(__name__)
 DB_FILE="discobandit.db"
 
